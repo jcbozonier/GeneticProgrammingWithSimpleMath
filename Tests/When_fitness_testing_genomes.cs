@@ -1,4 +1,7 @@
-﻿using EvolvingPythagoreansTheorem.FitnessTesting;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using EvolvingPythagoreansTheorem.BreedingSelection;
 using NUnit.Framework;
 
 namespace Tests
@@ -6,29 +9,28 @@ namespace Tests
     [TestFixture]
     public class When_fitness_testing_genomes
     {
-        PythagoreanContest TheContest;
-        string[] Genomes;
+        IEnumerable<string> Genes;
         string PythagoreanGenome;
-        ScoreCards TheScoreCards;
+        BreedingSelectionProcess BreederSelector;
 
         [Test]
         public void It_should_return_the_best_fit()
         {
-            Assert.That(TheScoreCards.GetBestGene(), Is.EqualTo(PythagoreanGenome));
+            Assert.That(Genes.Single(), Is.EqualTo(PythagoreanGenome));
         }
 
         [SetUp]
         public void Setup()
         {
-            TheContest = new PythagoreanContest();
+            BreederSelector = new BreedingSelectionProcess(new PythagoreanContest());
             PythagoreanGenome = "r+**aabb";
-            Genomes = new[] { "+ab", PythagoreanGenome};
+            Genes = new[] { "+ab", PythagoreanGenome };
             Because();
         }
 
         void Because()
         {
-            TheScoreCards = TheContest.ScoreThese(Genomes);
+            Genes = BreederSelector.ChooseTopPercentage(Genes, .4);
         }
     }
 }

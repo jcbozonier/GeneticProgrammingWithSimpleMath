@@ -3,19 +3,6 @@ using System.Collections.Generic;
 
 namespace EvolvingPythagoreansTheorem
 {
-    public static class MathExtensions
-    {
-        public static double Squared(this int x)
-        {
-            return Math.Pow(x, 2);
-        }
-
-        public static double Squared(this double x)
-        {
-            return Math.Pow(x, 2);
-        }
-    }
-
     public static class EnumerableExtensions
     {
         public static IEnumerable<int> Until(this int inclusiveStart, int exclusiveEnd)

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EvolvingPythagoreansTheorem.FitnessTesting
+namespace EvolvingPythagoreansTheorem.BreedingSelection
 {
     public class ScoreCard : IComparable
     {
@@ -8,7 +8,7 @@ namespace EvolvingPythagoreansTheorem.FitnessTesting
         public string Genome { get; private set; }
 
         public ScoreCard(string genome,
-                     double genomeScore)
+                         double genomeScore)
         {
             Genome = genome;
             Score = genomeScore;

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace EvolvingPythagoreansTheorem.FitnessTesting
+namespace EvolvingPythagoreansTheorem.BreedingSelection
 {
-    public class PythagoreanContest
+    public class PythagoreanContest : ITestsFitness
     {
         public ScoreCards ScoreThese(IEnumerable<string> genomes)
         {
