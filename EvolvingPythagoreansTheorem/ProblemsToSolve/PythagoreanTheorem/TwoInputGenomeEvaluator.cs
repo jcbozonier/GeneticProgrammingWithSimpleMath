@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using EvolvingPythagoreansTheorem.GenomeEvaluation;
 
-namespace EvolvingPythagoreansTheorem.BreedingSelection
+namespace EvolvingPythagoreansTheorem.ProblemsToSolve.PythagoreanTheorem
 {
     public class TwoInputGenomeEvaluator
     {

@@ -8,9 +8,9 @@ namespace EvolvingPythagoreansTheorem.BreedingSelection
     {
         readonly IEnumerable<ScoreCard> _Scores;
 
-        public ScoreCards(IEnumerable<ScoreCard> scores)
+        public ScoreCards(IEnumerable<string> genomes, ICanScore genomeScorer)
         {
-            _Scores = scores.ToArray();
+            _Scores = genomes.Select(genome => new ScoreCard(genome, genomeScorer.ScoreThis(genome))).ToArray();
         }
 
         public string GetBestGene()

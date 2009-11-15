@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using EvolvingPythagoreansTheorem.BreedingSelection;
+using EvolvingPythagoreansTheorem.ProblemsToSolve.PythagoreanTheorem;
 using NUnit.Framework;
 
 namespace Tests
@@ -22,7 +23,7 @@ namespace Tests
         [SetUp]
         public void Setup()
         {
-            BreederSelector = new BreedingSelectionProcess(new PythagoreanContest());
+            BreederSelector = new BreedingSelectionProcess(new ProblemDescription());
             PythagoreanGenome = "r+**aabb";
             Genes = new[] { "+ab", PythagoreanGenome };
             Because();

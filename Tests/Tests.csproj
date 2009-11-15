@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Environment_tests.cs" />
     <Compile Include="When_evaluating_a_genome.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="When_fitness_testing_genomes.cs" />

@@ -1,22 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using EvolvingPythagoreansTheorem.BreedingSelection;
 
-namespace EvolvingPythagoreansTheorem.BreedingSelection
+namespace EvolvingPythagoreansTheorem.ProblemsToSolve.PythagoreanTheorem
 {
-    public class PythagoreanContest : ITestsFitness
+    public class ProblemDescription : ICanScore
     {
-        public ScoreCards ScoreThese(IEnumerable<string> genomes)
+        public double ScoreThis(string genome)
         {
-            return new ScoreCards(genomes
-                                          .Select(genome =>
-                                                  new ScoreCard(genome,
-                                                                _ScoreGenome(
-                                                                        new TwoInputGenomeEvaluator(genome)))));
-        }
+            var genomeEvaluator = new TwoInputGenomeEvaluator(genome);
 
-        static double _ScoreGenome(TwoInputGenomeEvaluator genomeEvaluator)
-        {
             var score = 0.0;
 
             // Hypoteneuse must be longer than leg a

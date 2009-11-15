@@ -4,16 +4,16 @@ namespace EvolvingPythagoreansTheorem.BreedingSelection
 {
     public class BreedingSelectionProcess
     {
-        readonly ITestsFitness _FitnessTester;
+        readonly ICanScore _FitnessTester;
 
-        public BreedingSelectionProcess(ITestsFitness fitnessTester)
+        public BreedingSelectionProcess(ICanScore fitnessTester)
         {
             _FitnessTester = fitnessTester;
         }
 
         public IEnumerable<string> ChooseTopPercentage(IEnumerable<string> genes, double percentageToBreed)
         {
-            var genesToBreed = _FitnessTester.ScoreThese(genes).GetTop(percentageToBreed);
+            var genesToBreed = new ScoreCards(genes, _FitnessTester).GetTop(percentageToBreed);
             return genesToBreed;
         }
     }
