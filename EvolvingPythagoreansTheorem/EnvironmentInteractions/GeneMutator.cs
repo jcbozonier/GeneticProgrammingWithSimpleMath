@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace EvolvingPythagoreansTheorem.EnvironmentInteractions
 {
     public class GeneMutator
     {
+        static Random _Randomizer = new Random(DateTime.Now.Millisecond);
         readonly string[] _GeneGrammar;
         readonly double _MutationProbability;
         int _MaxGeneSize;
@@ -21,10 +23,7 @@ namespace EvolvingPythagoreansTheorem.EnvironmentInteractions
 
         public string Mutate(string gene)
         {
-            var rdm = new Random(DateTime.Now.Millisecond);
-            var chosenNumber = rdm.Next(1, 1000) / 1000.0;
-
-            if (chosenNumber > _MutationProbability)
+            if (!_ShouldMutate())
                 return gene;
 
             var randomGrammarIndexer = new Random(DateTime.Now.Millisecond);
@@ -35,15 +34,26 @@ namespace EvolvingPythagoreansTheorem.EnvironmentInteractions
             return _Mix(gene, randomizedMutantGene);
         }
 
-        static string _Mix(string gene, string mutantGene)
+        string _Mix(string gene, string mutantGene)
         {
-            var mutatedGene = "";
+            var mutatedGene = new StringBuilder();
             for (var i = 0; i < gene.Length; i++)
             {
-                mutatedGene += gene[i].ToString() + mutantGene[i].ToString();
+                if(_ShouldMutate())
+                    mutatedGene.Append(mutantGene[i]);
+                else
+                    mutatedGene.Append(gene[i]);
             }
 
-            return mutatedGene;
+            return mutatedGene.ToString();
+        }
+
+        bool _ShouldMutate()
+        {
+            var rdm = _Randomizer;
+            var chosenNumber = rdm.Next(1, 1000) / 1000.0;
+
+            return chosenNumber <= _MutationProbability;
         }
     }
 }

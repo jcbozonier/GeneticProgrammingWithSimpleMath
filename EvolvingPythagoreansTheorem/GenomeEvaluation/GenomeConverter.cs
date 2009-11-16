@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 
 namespace EvolvingPythagoreansTheorem.GenomeEvaluation
 {
@@ -26,30 +25,51 @@ namespace EvolvingPythagoreansTheorem.GenomeEvaluation
             {
                 if(symbolReader.IsEndOfSymbols())
                     break;
-                var symbol = symbolReader.ReadNextSymbol();
-                node.SetLiteral(symbol);
-                var childrenToCreateCount = _GetNumberOfChildrenFor(symbol);
 
-                var childrenNodes = 0.Until(childrenToCreateCount)
-                        .Select(x => new Operand())
-                        .ToArray();
-                childrenNodes.ForEach(node.Add);
-                childrenNodes.ForEach(childrenForNextLevel.Add);
+                var symbol = symbolReader.ReadNextSymbol();
+                var theOperator = _GetOperator(symbol);
+                node.SetLiteral(symbol);
+                node.SetOperator(theOperator);
+
+                var childrenToCreateCount = _GetNumberOfChildrenFor(theOperator);
+
+                for(var i=0; i<childrenToCreateCount; i++)
+                {
+                    var operand = new Operand();
+                    node.Add(operand);
+                    childrenForNextLevel.Add(operand);
+                }
             }
 
             return childrenForNextLevel;
         }
 
-        static int _GetNumberOfChildrenFor(string symbol)
+        static readonly Dictionary<string, Operators> _OperatorLookup = new Dictionary<string, Operators>()
+                                                               {
+                                                                       {"*", Operators.Multiply},
+                                                                       {"/", Operators.Divide},
+                                                                       {"+", Operators.Plus},
+                                                                       {"-", Operators.Minus},
+                                                                       {"r", Operators.Sqrt}
+                                                               };
+
+        static Operators _GetOperator(string symbol)
+        {
+            return _OperatorLookup.ContainsKey(symbol)
+                           ? _OperatorLookup[symbol]
+                           : Operators.Operand;
+        }
+
+        static int _GetNumberOfChildrenFor(Operators symbol)
         {
             switch(symbol)
             {
-                case "*":
-                case "/":
-                case "+":
-                case "-":
+                case Operators.Multiply:
+                case Operators.Divide:
+                case Operators.Plus:
+                case Operators.Minus:
                     return 2;
-                case "r":
+                case Operators.Sqrt:
                     return 1;
                 default:
                     return 0;

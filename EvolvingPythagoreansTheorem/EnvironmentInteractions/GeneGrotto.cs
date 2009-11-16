@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace EvolvingPythagoreansTheorem.EnvironmentInteractions
 {
@@ -22,13 +23,19 @@ namespace EvolvingPythagoreansTheorem.EnvironmentInteractions
                                  string geneB,
                                  int maxGeneSize)
         {
-            var newGene = "";
+            var newGene = new StringBuilder();
             for (var i = 0; i < geneA.Length; i++)
             {
-                newGene += _GetChar(i, geneA) + _GetChar(i, geneB);
+                if(i < geneB.Length)
+                    if (i % 2 == 0)
+                        newGene.Append(geneA[i]);
+                    else
+                        newGene.Append(geneB[i]);
+                else
+                    newGene.Append(geneA[i]);
             }
 
-            return _TruncateToMaxGeneSize(newGene, maxGeneSize);
+            return _TruncateToMaxGeneSize(newGene.ToString(), maxGeneSize);
         }
 
         static string _TruncateToMaxGeneSize(string gene,
@@ -37,13 +44,6 @@ namespace EvolvingPythagoreansTheorem.EnvironmentInteractions
             return gene.Length <= size
                            ? gene
                            : gene.Remove(size - 1);
-        }
-
-        static string _GetChar(int i, string geneA)
-        {
-            return i >= geneA.Length
-                           ? ""
-                           : geneA[i].ToString();
         }
     }
 }

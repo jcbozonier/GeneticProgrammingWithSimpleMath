@@ -9,6 +9,31 @@ namespace EvolvingPythagoreansTheorem.ProblemsToSolve.PythagoreanTheorem
         {
             var genomeEvaluator = new TwoInputGenomeEvaluator(genome);
 
+            //var score = _GetScoreByInferenceOfRules(genomeEvaluator);
+            var score = _GetScoreByEvaluatingClosenessToRealDeal(genomeEvaluator);
+
+            return score;
+        }
+
+        static double _GetScoreByEvaluatingClosenessToRealDeal(TwoInputGenomeEvaluator genomeEvaluator)
+        {
+            var aggregateResult = 0.0;
+
+            for(var a=100; a < 105; a++)
+            {
+                for(var b=100; b<105; b++)
+                {
+                    var geneResult = genomeEvaluator.Evaluate(a, b);
+                    var actualResult = Math.Sqrt(a.Squared() + b.Squared());
+
+                    aggregateResult += - Math.Abs(geneResult - actualResult);
+                }
+            }
+
+            return aggregateResult / 100;
+        }
+
+        static double _GetScoreByInferenceOfRules(TwoInputGenomeEvaluator genomeEvaluator) {
             var score = 0.0;
 
             // Hypoteneuse must be longer than leg a
@@ -67,13 +92,15 @@ namespace EvolvingPythagoreansTheorem.ProblemsToSolve.PythagoreanTheorem
 
             // Hypoteneuse is a*sqrt(2) if a == b
             {
-                var a = 48;
+                var a = 1;
                 var b = a;
                 var c = genomeEvaluator.Evaluate(a, b);
 
-                score -= Math.Abs(c.Squared() - 2 * a.Squared());
+                score += 2 * a.Squared() / c.Squared();
             }
 
+            if (double.IsInfinity(score))
+                score = double.MinValue;
             return score;
         }
     }

@@ -1,24 +1,19 @@
 ﻿using System;
 using EvolvingPythagoreansTheorem.EnvironmentInteractions;
-using EvolvingPythagoreansTheorem.ProblemsToSolve.PythagoreanTheorem;
-using NUnit.Framework;
 
-namespace Tests
+namespace GPRunner
 {
-    [TestFixture]
-    public class TestHarness
+    class Program
     {
-        [Ignore]
-        [Test]
-        public void RunSimulation()
+        static void Main(string[] args)
         {
-            var lifeCycle = new GeneLifeCycle();
-            lifeCycle.Go((bestGene,
+            new GeneLifeCycle().Go((bestGene,
                           score) =>
                          {
                              Console.WriteLine("Best Gene: " + bestGene);
                              Console.WriteLine("Score: " + score);
                          });
+            Console.Read();
         }
     }
 }

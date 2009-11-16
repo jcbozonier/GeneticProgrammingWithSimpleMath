@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvolvingPythagoreansTheorem
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{0253E400-7D7D-4AC9-A4D1-8822CD6E8FAF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPRunner", "GPRunner\GPRunner.csproj", "{F37D90B1-01EC-4461-8B51-624FF832D828}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{0253E400-7D7D-4AC9-A4D1-8822CD6E8FAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0253E400-7D7D-4AC9-A4D1-8822CD6E8FAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0253E400-7D7D-4AC9-A4D1-8822CD6E8FAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F37D90B1-01EC-4461-8B51-624FF832D828}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F37D90B1-01EC-4461-8B51-624FF832D828}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F37D90B1-01EC-4461-8B51-624FF832D828}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F37D90B1-01EC-4461-8B51-624FF832D828}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

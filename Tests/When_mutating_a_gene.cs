@@ -18,9 +18,9 @@ namespace Tests
         }
 
         [Test]
-        public void It_should_be_twice_as_long()
+        public void It_should_be_the_same_length()
         {
-            Assert.That(TheMutatedGene.Length, Is.EqualTo(TheGene.Length * 2));
+            Assert.That(TheMutatedGene.Length, Is.EqualTo(TheGene.Length));
         }
 
         [Test]

@@ -10,7 +10,7 @@ namespace EvolvingPythagoreansTheorem.BreedingSelection
 
         public ScoreCards(IEnumerable<string> genomes, ICanScore genomeScorer)
         {
-            _Scores = genomes.Select(genome => new ScoreCard(genome, genomeScorer.ScoreThis(genome))).ToArray();
+            _Scores = genomes.Select(genome => new ScoreCard(genome, genomeScorer.ScoreThis(genome)));
         }
 
         public string GetBestGene()

@@ -3,9 +3,15 @@ using System.Collections.Generic;
 
 namespace EvolvingPythagoreansTheorem.GenomeEvaluation
 {
+    public enum Operators
+    {
+        Plus, Minus, Multiply, Divide, Sqrt, Operand, None
+    }
+
     public class Operand : IExpression
     {
         readonly List<IExpression> _Operands;
+        Operators _Operator = Operators.None;
         string _Literal;
 
         public Operand()
@@ -20,20 +26,20 @@ namespace EvolvingPythagoreansTheorem.GenomeEvaluation
 
         public double Evaluate(IDictionary<string, double> variableList)
         {
-            switch (_Literal)
+            switch (_Operator)
             {
-                case "+":
+                case Operators.Plus:
                     return _Operands[0].Evaluate(variableList) + _Operands[1].Evaluate(variableList);
-                case "-":
+                case Operators.Minus:
                     return _Operands[0].Evaluate(variableList) - _Operands[1].Evaluate(variableList);
-                case "*":
+                case Operators.Multiply:
                     return _Operands[0].Evaluate(variableList) * _Operands[1].Evaluate(variableList);
-                case "/":
+                case Operators.Divide:
                     return _Operands[0].Evaluate(variableList) / _Operands[1].Evaluate(variableList);
-                case "r":
+                case Operators.Sqrt:
                     return Math.Sqrt(_Operands[0].Evaluate(variableList));
                 default:
-                    return _Literal != null ? variableList[_Literal] : 0.0;
+                    return _Operator != Operators.None ? variableList[_Literal] : 0.0;
             }
         }
 
@@ -43,6 +49,11 @@ namespace EvolvingPythagoreansTheorem.GenomeEvaluation
                 throw new ArgumentNullException("The literal can never be null or empty!!!");
 
             _Literal = character;
+        }
+
+        public void SetOperator(Operators theOperator)
+        {
+            _Operator = theOperator;
         }
     }
 }
