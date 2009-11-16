@@ -36,7 +36,7 @@ namespace EvolvingPythagoreansTheorem.EnvironmentInteractions
             var mutatedGene = "";
             for (var i = 0; i < gene.Length; i++)
             {
-                mutatedGene += gene[i] + mutantGene[i];
+                mutatedGene += gene[i].ToString() + mutantGene[i].ToString();
             }
 
             return mutatedGene;

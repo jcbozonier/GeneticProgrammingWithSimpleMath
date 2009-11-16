@@ -48,6 +48,8 @@
     <Compile Include="BreedingSelection\BreedingSelectionProcess.cs" />
     <Compile Include="BreedingSelection\ICanScore.cs" />
     <Compile Include="EnumerableExtensions.cs" />
+    <Compile Include="EnvironmentInteractions\GeneGod.cs" />
+    <Compile Include="EnvironmentInteractions\GeneGrotto.cs" />
     <Compile Include="EnvironmentInteractions\GeneMutator.cs" />
     <Compile Include="ProblemsToSolve\PythagoreanTheorem\TwoInputGenomeEvaluator.cs" />
     <Compile Include="ProblemsToSolve\PythagoreanTheorem\ProblemDescription.cs" />

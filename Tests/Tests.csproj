@@ -49,6 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="When_populating_the_gene_pool.cs" />
+    <Compile Include="When_mating_genes.cs" />
     <Compile Include="When_mutating_a_gene.cs" />
     <Compile Include="When_evaluating_a_genome.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
