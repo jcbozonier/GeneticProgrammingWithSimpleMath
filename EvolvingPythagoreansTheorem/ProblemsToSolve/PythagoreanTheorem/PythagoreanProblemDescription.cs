@@ -9,8 +9,8 @@ namespace EvolvingPythagoreansTheorem.ProblemsToSolve.PythagoreanTheorem
         {
             var genomeEvaluator = new TwoInputGenomeEvaluator(genome);
 
-            //var score = _GetScoreByInferenceOfRules(genomeEvaluator);
-            var score = _GetScoreByEvaluatingClosenessToRealDeal(genomeEvaluator);
+            var score = _GetScoreByInferenceOfRules(genomeEvaluator);
+            //var score = _GetScoreByEvaluatingClosenessToRealDeal(genomeEvaluator);
 
             return score;
         }
@@ -96,7 +96,7 @@ namespace EvolvingPythagoreansTheorem.ProblemsToSolve.PythagoreanTheorem
                 var b = a;
                 var c = genomeEvaluator.Evaluate(a, b);
 
-                score += 2 * a.Squared() / c.Squared();
+                score += -Math.Abs(2*a.Squared() - c.Squared());
             }
 
             if (double.IsInfinity(score))

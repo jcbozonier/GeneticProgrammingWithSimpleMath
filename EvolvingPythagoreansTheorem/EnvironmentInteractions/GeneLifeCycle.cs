@@ -15,7 +15,7 @@ namespace EvolvingPythagoreansTheorem.EnvironmentInteractions
             var god = new GeneGod(configuration.GeneGrammar, maxGeneSize);
 
             var breedingSelector = new BreedingSelection.BreedingSelectionProcess(configuration.GetProblemDescription());
-            var mutator = new GeneMutator(configuration.GeneGrammar, .10, maxGeneSize);
+            var mutator = new GeneMutator(configuration.GeneGrammar, .20, maxGeneSize);
             var grotto = new GeneGrotto(maxGeneSize);
 
             var populationSizeToMaintain = 500;

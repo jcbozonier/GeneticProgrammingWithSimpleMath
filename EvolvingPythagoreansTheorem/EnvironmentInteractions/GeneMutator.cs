@@ -45,7 +45,9 @@ namespace EvolvingPythagoreansTheorem.EnvironmentInteractions
                     mutatedGene.Append(gene[i]);
             }
 
-            return mutatedGene.ToString();
+            return _ShouldMutate()
+                           ? mutatedGene.ToString()
+                           : mutatedGene.ToString() + mutatedGene;
         }
 
         bool _ShouldMutate()
