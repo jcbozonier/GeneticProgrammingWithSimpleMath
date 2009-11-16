@@ -17,7 +17,7 @@ namespace EvolvingPythagoreansTheorem.EnvironmentInteractions
 
         public IEnumerable<string> GetItOn(IEnumerable<string> genes)
         {
-            return genes.SelectMany(x => genes.Select(y => _BreedWith(x, y, _MaxGeneSize))).ToArray();
+            return genes.SelectMany(x => genes.Select(y => _BreedWith(x, y, _MaxGeneSize)));
         }
 
         static string _BreedWith(string geneA,

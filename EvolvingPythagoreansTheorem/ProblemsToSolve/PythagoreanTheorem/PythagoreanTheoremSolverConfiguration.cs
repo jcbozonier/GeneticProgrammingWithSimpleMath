@@ -11,8 +11,8 @@ namespace EvolvingPythagoreansTheorem.ProblemsToSolve.PythagoreanTheorem
             GeneGrammar = new[] { "+", "-", "/", "*", "r", "a", "b" };
             GenerationRunCount = 5000;
             MaximumGeneLength = 15;
-            ProbabilityOfMutation = .15;
-            PopulationSizeToMaintain = 500;
+            ProbabilityOfMutation = .5;
+            PopulationSizeToMaintain = 625;
             KeepTheTopNPerformersEachGeneration = 5;
             StopIfScoreIsAtLeastThisHigh = .958;
         }

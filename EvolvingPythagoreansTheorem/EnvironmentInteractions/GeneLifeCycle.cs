@@ -16,30 +16,23 @@ namespace EvolvingPythagoreansTheorem.EnvironmentInteractions
             var keepTopNPerformers = configuration.KeepTheTopNPerformersEachGeneration;
 
             var god = new GeneGod(configuration.GeneGrammar, maxGeneSize);
-
             var breedingSelector = new BreedingSelection.BreedingSelectionProcess(configuration.GetProblemDescription());
             var mutator = new GeneMutator(configuration.GeneGrammar, probabilityOfMutation, maxGeneSize);
             var grotto = new GeneGrotto(maxGeneSize);
 
             
             var population = god.CreateCountOfGenes(populationSizeToMaintain);
-
             var veryBestGene = "";
-            var topScore = double.MinValue;
 
             foreach (var generation in 0.Until(generationsToRunFor))
             {
-                var bestGenes = breedingSelector.ChooseTopNPerformers(population, keepTopNPerformers);
-                veryBestGene = bestGenes.First();
-                topScore = configuration.GetProblemDescription().ScoreThis(veryBestGene);
+                population = breedingSelector.ChooseTopNPerformers(population, keepTopNPerformers);
+                veryBestGene = population.First();
 
-                statusReport(veryBestGene,
-                             topScore);
-
+                var topScore = configuration.GetProblemDescription().ScoreThis(veryBestGene);
+                statusReport(veryBestGene, topScore);
                 if(topScore >= configuration.StopIfScoreIsAtLeastThisHigh)
                     break;
-
-                population = bestGenes;
 
                 while(population.Count() < populationSizeToMaintain)
                 {

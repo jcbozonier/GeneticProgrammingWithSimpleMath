@@ -27,11 +27,12 @@ namespace EvolvingPythagoreansTheorem.EnvironmentInteractions
                 return gene;
 
             var randomGrammarIndexer = new Random(DateTime.Now.Millisecond);
-            var randomizedMutantGene = 0.Until(gene.Length)
+            var randomizedMutantGene = new StringBuilder();
+            0.Until(gene.Length)
                     .Select(x => _GeneGrammar[randomGrammarIndexer.Next(0, _GeneGrammar.Length)])
-                    .Aggregate((x, y) => x + y);
+                    .ForEach(x=>randomizedMutantGene.Append(x));
 
-            return _Mix(gene, randomizedMutantGene);
+            return _Mix(gene, randomizedMutantGene.ToString());
         }
 
         string _Mix(string gene, string mutantGene)
