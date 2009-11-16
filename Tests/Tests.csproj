@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TestHarness.cs" />
     <Compile Include="When_populating_the_gene_pool.cs" />
     <Compile Include="When_mating_genes.cs" />
     <Compile Include="When_mutating_a_gene.cs" />

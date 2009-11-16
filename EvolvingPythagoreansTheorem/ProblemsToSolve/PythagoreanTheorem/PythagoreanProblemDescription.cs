@@ -3,7 +3,7 @@ using EvolvingPythagoreansTheorem.BreedingSelection;
 
 namespace EvolvingPythagoreansTheorem.ProblemsToSolve.PythagoreanTheorem
 {
-    public class ProblemDescription : ICanScore
+    public class PythagoreanProblemDescription : ICanScore
     {
         public double ScoreThis(string genome)
         {

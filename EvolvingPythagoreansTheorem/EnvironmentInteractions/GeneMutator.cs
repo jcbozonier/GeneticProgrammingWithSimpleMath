@@ -8,11 +8,15 @@ namespace EvolvingPythagoreansTheorem.EnvironmentInteractions
     {
         readonly string[] _GeneGrammar;
         readonly double _MutationProbability;
+        int _MaxGeneSize;
 
-        public GeneMutator(IEnumerable<string> geneGrammar, double mutationProbability)
+        public GeneMutator(IEnumerable<string> geneGrammar,
+                           double mutationProbability,
+                           int size)
         {
             _GeneGrammar = geneGrammar.ToArray();
             _MutationProbability = mutationProbability;
+            _MaxGeneSize = size;
         }
 
         public string Mutate(string gene)

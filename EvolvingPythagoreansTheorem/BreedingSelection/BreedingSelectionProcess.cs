@@ -11,9 +11,9 @@ namespace EvolvingPythagoreansTheorem.BreedingSelection
             _FitnessTester = fitnessTester;
         }
 
-        public IEnumerable<string> ChooseTopPercentage(IEnumerable<string> genes, double percentageToBreed)
+        public IEnumerable<string> ChooseTopNPerformers(IEnumerable<string> genes, int numberToKeep)
         {
-            var genesToBreed = new ScoreCards(genes, _FitnessTester).GetTop(percentageToBreed);
+            var genesToBreed = new ScoreCards(genes, _FitnessTester).GetTop(numberToKeep);
             return genesToBreed;
         }
     }

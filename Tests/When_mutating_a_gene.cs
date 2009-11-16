@@ -9,6 +9,7 @@ namespace Tests
         GeneMutator Mutator;
         string TheGene;
         string TheMutatedGene;
+        int MaxGeneSize;
 
         [Test]
         public void It_should_NOT_match_the_gene_offered_for_mutation()
@@ -38,7 +39,8 @@ namespace Tests
         public void Context()
         {
             TheGene = "+xy";
-            Mutator = new GeneMutator(new[] { "+", "-", "/", "*", "r", "a", "b" }, 1);
+            MaxGeneSize = 5;
+            Mutator = new GeneMutator(new[] { "+", "-", "/", "*", "r", "a", "b" }, 1, MaxGeneSize);
             Because();
         }
 
@@ -54,6 +56,7 @@ namespace Tests
         GeneMutator Mutator;
         string TheGene;
         string TheMutatedGene;
+        int MaxGeneSize;
 
         [Test]
         public void It_should_match_the_gene_offered_for_mutation()
@@ -65,7 +68,8 @@ namespace Tests
         public void Context()
         {
             TheGene = "+xy";
-            Mutator = new GeneMutator(new []{"+", "-", "/", "*", "r", "a", "b"}, 0);
+            MaxGeneSize = 4;
+            Mutator = new GeneMutator(new[] { "+", "-", "/", "*", "r", "a", "b" }, 0, MaxGeneSize);
             Because();
         }
 

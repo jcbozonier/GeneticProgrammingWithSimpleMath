@@ -15,6 +15,12 @@ namespace Tests
         IEnumerable<string> BabyGenes;
 
         [Test]
+        public void Each_gene_should_be_smaller_than_max_gene_size()
+        {
+            Assert.That(BabyGenes.All(x=>x.Length<=4), Is.True);
+        }
+
+        [Test]
         public void Each_gene_should_be_different()
         {
             Assert.That(BabyGenes.Intersect(BabyGenes).Count(), Is.EqualTo(4));
@@ -30,7 +36,7 @@ namespace Tests
         public void Context()
         {
             TheGenes = new[] {"+ab", "-cd"};
-            TheGeneGrotto = new GeneGrotto();
+            TheGeneGrotto = new GeneGrotto(4);
             BabyGenes = TheGeneGrotto.GetItOn(TheGenes);
         }
     }

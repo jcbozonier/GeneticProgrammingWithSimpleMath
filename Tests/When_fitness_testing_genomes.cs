@@ -23,7 +23,7 @@ namespace Tests
         [SetUp]
         public void Setup()
         {
-            BreederSelector = new BreedingSelectionProcess(new ProblemDescription());
+            BreederSelector = new BreedingSelectionProcess(new PythagoreanProblemDescription());
             PythagoreanGenome = "r+**aabb";
             Genes = new[] { "/ab", PythagoreanGenome };
             Because();
@@ -31,7 +31,7 @@ namespace Tests
 
         void Because()
         {
-            Genes = BreederSelector.ChooseTopPercentage(Genes, .4);
+            Genes = BreederSelector.ChooseTopNPerformers(Genes, 1);
         }
     }
 
@@ -51,7 +51,7 @@ namespace Tests
         [SetUp]
         public void Setup()
         {
-            BreederSelector = new BreedingSelectionProcess(new ProblemDescription());
+            BreederSelector = new BreedingSelectionProcess(new PythagoreanProblemDescription());
             PythagoreanGenome = "r+**aabb";
             Genes = new[] { "+ab", PythagoreanGenome };
             Because();
@@ -59,7 +59,7 @@ namespace Tests
 
         void Because()
         {
-            Genes = BreederSelector.ChooseTopPercentage(Genes, .4);
+            Genes = BreederSelector.ChooseTopNPerformers(Genes, 1);
         }
     }
 }

@@ -18,15 +18,12 @@ namespace EvolvingPythagoreansTheorem.BreedingSelection
             return _Scores.Max(x => x).Genome;
         }
 
-        public IEnumerable<string> GetTop(double percentageToBreed)
+        public IEnumerable<string> GetTop(int numberToKeep)
         {
-            var geneCount = _Scores.Count();
-            var numberOfGenesToBreed = (geneCount*percentageToBreed).Ceiling();
-
             var orderedScores = _Scores.OrderByDescending(x => x.Score);
 
             return orderedScores
-                .Take(numberOfGenesToBreed)
+                .Take(numberToKeep)
                 .Select(x=>x.Genome)
                 .ToArray();
         }

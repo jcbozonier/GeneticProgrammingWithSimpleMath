@@ -30,7 +30,7 @@ namespace Tests
         {
             RequestedGeneCount = 10;
             GeneGrammar = new[] {"a", "b", "c"};
-            God = new GeneGod(GeneGrammar);
+            God = new GeneGod(GeneGrammar, 5);
             Because();
         }
 
