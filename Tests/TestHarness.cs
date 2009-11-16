@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using EvolvingPythagoreansTheorem.EnvironmentInteractions;
 using EvolvingPythagoreansTheorem.ProblemsToSolve.PythagoreanTheorem;
 using NUnit.Framework;
@@ -15,8 +12,10 @@ namespace Tests
         [Test]
         public void RunSimulation()
         {
-            
-            Console.WriteLine(new PythagoreanProblemDescription().ScoreThis("rr++rrb/rr/brrb*rrb+rr/*rrrarrbb++br++*a++*b++a-+"));
+            var lifeCycle = new GeneLifeCycle();
+            var bestGene = lifeCycle.Go();
+            Console.WriteLine("Best Gene: " + bestGene);
+            Console.WriteLine("Score: " + new PythagoreanProblemDescription().ScoreThis(bestGene));
         }
     }
 }
