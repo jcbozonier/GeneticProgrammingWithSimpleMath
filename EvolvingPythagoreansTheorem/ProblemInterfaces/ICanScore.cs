@@ -1,4 +1,4 @@
-﻿namespace EvolvingPythagoreansTheorem.BreedingSelection
+﻿namespace EvolvingPythagoreansTheorem.ProblemInterfaces
 {
     public interface ICanScore
     {

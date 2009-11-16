@@ -1,5 +1,6 @@
 ﻿using System;
 using EvolvingPythagoreansTheorem.EnvironmentInteractions;
+using EvolvingPythagoreansTheorem.ProblemsToSolve.PythagoreanTheorem;
 
 namespace GPRunner
 {
@@ -7,12 +8,14 @@ namespace GPRunner
     {
         static void Main(string[] args)
         {
-            new GeneLifeCycle().Go((bestGene,
-                          score) =>
-                         {
-                             Console.WriteLine("Best Gene: " + bestGene);
-                             Console.WriteLine("Score: " + score);
-                         });
+            new GeneLifeCycle()
+                    .Go(new PythagoreanTheoremSolverConfiguration(),
+                        (bestGene,
+                         score) =>
+                        {
+                            Console.WriteLine("Best Gene: " + bestGene);
+                            Console.WriteLine("Score: " + score);
+                        });
             Console.Read();
         }
     }

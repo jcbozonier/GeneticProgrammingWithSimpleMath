@@ -13,8 +13,8 @@ namespace Tests
         public void RunSimulation()
         {
             var lifeCycle = new GeneLifeCycle();
-            lifeCycle.Go((bestGene,
-                          score) =>
+            lifeCycle.Go(new PythagoreanTheoremSolverConfiguration(),
+                         (bestGene, score)=>
                          {
                              Console.WriteLine("Best Gene: " + bestGene);
                              Console.WriteLine("Score: " + score);

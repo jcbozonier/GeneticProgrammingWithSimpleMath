@@ -1,5 +1,5 @@
 ﻿using System;
-using EvolvingPythagoreansTheorem.BreedingSelection;
+using EvolvingPythagoreansTheorem.ProblemInterfaces;
 
 namespace EvolvingPythagoreansTheorem.ProblemsToSolve.PythagoreanTheorem
 {
@@ -42,7 +42,7 @@ namespace EvolvingPythagoreansTheorem.ProblemsToSolve.PythagoreanTheorem
                 var b = 9;
                 var c = genomeEvaluator.Evaluate(a, b);
 
-                score += c > a ? 1 : 0;
+                score += c > a ? .16 : 0;
             }
 
             // Hypoteneuse must be longer than leg b
@@ -51,7 +51,7 @@ namespace EvolvingPythagoreansTheorem.ProblemsToSolve.PythagoreanTheorem
                 var b = 20;
                 var c = genomeEvaluator.Evaluate(a, b);
 
-                score += c > b ? 1 : 0;
+                score += c > b ? .16 : 0;
             }
 
             // Hypoteneuse must be shorter than leg a + leg b
@@ -60,7 +60,7 @@ namespace EvolvingPythagoreansTheorem.ProblemsToSolve.PythagoreanTheorem
                 var b = 4;
                 var c = genomeEvaluator.Evaluate(a, b);
 
-                score += c < a + b ? 1 : 0;
+                score += c < a + b ? .16 : 0;
             }
 
             // Hypoteneuse is a if b == 0
@@ -69,7 +69,7 @@ namespace EvolvingPythagoreansTheorem.ProblemsToSolve.PythagoreanTheorem
                 var b = 0;
                 var c = genomeEvaluator.Evaluate(a, b);
 
-                score += c == a ? 1 : 0;
+                score += c == a ? .16 : 0;
             }
 
             // Hypoteneuse is b if a == 0
@@ -78,7 +78,7 @@ namespace EvolvingPythagoreansTheorem.ProblemsToSolve.PythagoreanTheorem
                 var b = 4;
                 var c = genomeEvaluator.Evaluate(a, b);
 
-                score += c == b ? 1 : 0;
+                score += c == b ? .16 : 0;
             }
 
             // Hypoteneuse is 0 if a == 0 && b == 0
@@ -87,7 +87,7 @@ namespace EvolvingPythagoreansTheorem.ProblemsToSolve.PythagoreanTheorem
                 var b = 0;
                 var c = genomeEvaluator.Evaluate(a, b);
 
-                score += c == b ? 1 : 0;
+                score += c == b ? .16 : 0;
             }
 
             // Hypoteneuse is a*sqrt(2) if a == b

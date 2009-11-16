@@ -1,35 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using EvolvingPythagoreansTheorem.ProblemsToSolve.PythagoreanTheorem;
+using EvolvingPythagoreansTheorem.ProblemInterfaces;
 
 namespace EvolvingPythagoreansTheorem.EnvironmentInteractions
 {
     public class GeneLifeCycle
     {
-        public string Go(Action<string, double> statusReport)
+        public string Go(IGenePoolConfiguration configuration, Action<string, double> statusReport)
         {
-            var configuration = new ProblemConfiguration();
-            var generationsToRunFor = 1000;
-            var maxGeneSize = 25;
+            var probabilityOfMutation = configuration.ProbabilityOfMutation;
+            var generationsToRunFor = configuration.GenerationRunCount;
+            var maxGeneSize = configuration.MaximumGeneLength;
+            var populationSizeToMaintain = configuration.PopulationSizeToMaintain;
+            var keepTopNPerformers = configuration.KeepTheTopNPerformersEachGeneration;
+
             var god = new GeneGod(configuration.GeneGrammar, maxGeneSize);
 
             var breedingSelector = new BreedingSelection.BreedingSelectionProcess(configuration.GetProblemDescription());
-            var mutator = new GeneMutator(configuration.GeneGrammar, .20, maxGeneSize);
+            var mutator = new GeneMutator(configuration.GeneGrammar, probabilityOfMutation, maxGeneSize);
             var grotto = new GeneGrotto(maxGeneSize);
 
-            var populationSizeToMaintain = 500;
+            
             var population = god.CreateCountOfGenes(populationSizeToMaintain);
 
             var veryBestGene = "";
+            var topScore = double.MinValue;
 
             foreach (var generation in 0.Until(generationsToRunFor))
             {
-                var bestGenes = breedingSelector.ChooseTopNPerformers(population, 10);
+                var bestGenes = breedingSelector.ChooseTopNPerformers(population, keepTopNPerformers);
                 veryBestGene = bestGenes.First();
+                topScore = configuration.GetProblemDescription().ScoreThis(veryBestGene);
 
                 statusReport(veryBestGene,
-                             configuration.GetProblemDescription().ScoreThis(veryBestGene));
+                             topScore);
+
+                if(topScore >= configuration.StopIfScoreIsAtLeastThisHigh)
+                    break;
 
                 population = bestGenes;
 
@@ -38,16 +46,16 @@ namespace EvolvingPythagoreansTheorem.EnvironmentInteractions
                     population = grotto.GetItOn(population);
                     population = population.Select(x => mutator.Mutate(x));
                 }
+
                 population = _RemoveSurplusOrganisms(populationSizeToMaintain, population);
 
-                if(population.All(x=>x == veryBestGene))
-                    break;
+                
             }
 
             return veryBestGene;
         }
 
-        IEnumerable<string> _RemoveSurplusOrganisms(int populationSizeToMaintain,
+        static IEnumerable<string> _RemoveSurplusOrganisms(int populationSizeToMaintain,
                                             IEnumerable<string> population) {
             if(population.Count() > populationSizeToMaintain)
             {

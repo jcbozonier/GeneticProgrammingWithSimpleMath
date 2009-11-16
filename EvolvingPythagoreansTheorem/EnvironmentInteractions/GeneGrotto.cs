@@ -8,6 +8,7 @@ namespace EvolvingPythagoreansTheorem.EnvironmentInteractions
     public class GeneGrotto
     {
         readonly int _MaxGeneSize;
+        static Random _Randomizer = new Random(DateTime.Now.Millisecond);
 
         public GeneGrotto(int maxGeneSize)
         {
@@ -24,10 +25,12 @@ namespace EvolvingPythagoreansTheorem.EnvironmentInteractions
                                  int maxGeneSize)
         {
             var newGene = new StringBuilder();
+            var geneToSwapFirst = _Randomizer.Next(0, 1);
+
             for (var i = 0; i < geneA.Length; i++)
             {
                 if(i < geneB.Length)
-                    if (i % 2 == 0)
+                    if (i % 2 == geneToSwapFirst)
                         newGene.Append(geneA[i]);
                     else
                         newGene.Append(geneB[i]);
