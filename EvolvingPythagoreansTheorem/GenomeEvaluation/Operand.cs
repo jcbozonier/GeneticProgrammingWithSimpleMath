@@ -33,7 +33,7 @@ namespace EvolvingPythagoreansTheorem.GenomeEvaluation
                 case "r":
                     return Math.Sqrt(_Operands[0].Evaluate(variableList));
                 default:
-                    return variableList[_Literal];
+                    return _Literal != null ? variableList[_Literal] : 0.0;
             }
         }
 

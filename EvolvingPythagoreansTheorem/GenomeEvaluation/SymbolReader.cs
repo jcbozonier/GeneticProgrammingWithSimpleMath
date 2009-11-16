@@ -1,4 +1,6 @@
-﻿namespace EvolvingPythagoreansTheorem.GenomeEvaluation
+﻿using System;
+
+namespace EvolvingPythagoreansTheorem.GenomeEvaluation
 {
     public class SymbolReader
     {
@@ -14,6 +16,11 @@
         {
             _CurrentIndex++;
             return _Genome[_CurrentIndex].ToString();
+        }
+
+        public bool IsEndOfSymbols()
+        {
+            return _CurrentIndex + 1 >= _Genome.Length;
         }
     }
 }

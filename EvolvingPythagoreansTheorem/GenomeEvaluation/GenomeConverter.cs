@@ -24,6 +24,8 @@ namespace EvolvingPythagoreansTheorem.GenomeEvaluation
 
             foreach(var node in nodes)
             {
+                if(symbolReader.IsEndOfSymbols())
+                    break;
                 var symbol = symbolReader.ReadNextSymbol();
                 node.SetLiteral(symbol);
                 var childrenToCreateCount = _GetNumberOfChildrenFor(symbol);
