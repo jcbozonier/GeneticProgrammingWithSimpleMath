@@ -8,10 +8,16 @@ namespace EvolvingPythagoreansTheorem.ProblemsToSolve.PythagoreanTheorem
     public class PythagoreanProblemDescription : ICanScore
     {
         IDictionary<string, double> _Parameters;
+        int _MaxGeneLength;
+
+        public PythagoreanProblemDescription(int length)
+        {
+            _MaxGeneLength = length;
+        }
 
         public double ScoreThis(string genome)
         {
-            var genomeEvaluator = new GenomeConverter().Convert(genome);
+            var genomeEvaluator = new DirectGenomeEvaluator(genome); //new GenomeConverter().Convert(genome);
             _Parameters = new Dictionary<string, double>() {{"a", 0.0}, {"b", 0.0}};
 
             var score = _GetScoreByInferenceOfRules(genomeEvaluator);
@@ -48,6 +54,10 @@ namespace EvolvingPythagoreansTheorem.ProblemsToSolve.PythagoreanTheorem
 
         double _GetScoreByInferenceOfRules(IEvaluatable genomeEvaluator) {
             var score = 0.0;
+
+            {
+                score += (.08)*(1 - genomeEvaluator.GetOperableGeneLength()/_MaxGeneLength);
+            }
 
             // Hypoteneuse must be longer than leg a
             {

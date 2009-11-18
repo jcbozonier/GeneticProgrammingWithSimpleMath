@@ -37,7 +37,7 @@ namespace EvolvingPythagoreansTheorem.EnvironmentInteractions
 
         string _Mix(string gene, string mutantGene)
         {
-            var mutatedGene = new StringBuilder();
+            var mutatedGene = new StringBuilder(mutantGene.Length);
             for (var i = 0; i < gene.Length; i++)
             {
                 if(_ShouldMutate())

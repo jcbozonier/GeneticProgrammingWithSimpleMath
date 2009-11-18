@@ -9,12 +9,12 @@ namespace EvolvingPythagoreansTheorem.ProblemsToSolve.PythagoreanTheorem
         public PythagoreanTheoremSolverConfiguration()
         {
             GeneGrammar = new[] { "+", "-", "/", "*", "r", "a", "b" };
-            GenerationRunCount = 5000;
+            GenerationRunCount = 1000000;
             MaximumGeneLength = 15;
-            ProbabilityOfMutation = .5;
+            ProbabilityOfMutation = .25;
             PopulationSizeToMaintain = 625;
             KeepTheTopNPerformersEachGeneration = 5;
-            StopIfScoreIsAtLeastThisHigh = .958;
+            StopIfScoreIsAtLeastThisHigh = 1.032;
         }
 
         public IEnumerable<string> GeneGrammar{ get; private set; }
@@ -26,7 +26,7 @@ namespace EvolvingPythagoreansTheorem.ProblemsToSolve.PythagoreanTheorem
         public double StopIfScoreIsAtLeastThisHigh { get; private set; }
         public ICanScore GetProblemDescription()
         {
-            return new PythagoreanProblemDescription();
+            return new PythagoreanProblemDescription(MaximumGeneLength);
         }
     }
 }

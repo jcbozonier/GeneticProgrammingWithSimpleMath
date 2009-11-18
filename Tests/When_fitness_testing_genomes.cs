@@ -23,7 +23,7 @@ namespace Tests
         [SetUp]
         public void Setup()
         {
-            BreederSelector = new BreedingSelectionProcess(new PythagoreanProblemDescription());
+            BreederSelector = new BreedingSelectionProcess(new PythagoreanProblemDescription(8));
             PythagoreanGenome = "r+**aabb";
             Genes = new[] { "/ab", PythagoreanGenome };
             Because();
@@ -51,7 +51,7 @@ namespace Tests
         [SetUp]
         public void Setup()
         {
-            BreederSelector = new BreedingSelectionProcess(new PythagoreanProblemDescription());
+            BreederSelector = new BreedingSelectionProcess(new PythagoreanProblemDescription(8));
             PythagoreanGenome = "r+**aabb";
             Genes = new[] { "+ab", PythagoreanGenome };
             Because();

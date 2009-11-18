@@ -43,6 +43,11 @@ namespace EvolvingPythagoreansTheorem.GenomeEvaluation
             }
         }
 
+        public int GetOperableGeneLength()
+        {
+            throw new NotImplementedException();
+        }
+
         public void SetLiteral(string character)
         {
             if (String.IsNullOrEmpty(character))

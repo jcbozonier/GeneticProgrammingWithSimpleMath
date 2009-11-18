@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BreedingSelection\BreedingSelectionProcess.cs" />
+    <Compile Include="GenomeEvaluation\DirectGenomeEvaluator.cs" />
     <Compile Include="ProblemInterfaces\ICanScore.cs" />
     <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="EnvironmentInteractions\GeneGod.cs" />
